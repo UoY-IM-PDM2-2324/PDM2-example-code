@@ -18,14 +18,14 @@ let experimentRunning = false;
  * ... is known as the "spread operator". It breaks apart the contents of an object / array
  * [...someObject] copies the contents of someObject into a new array
  */
-const arr10 = [...Array(10).keys()];
-const arr1000 = [...Array(1000).keys()];
-const arr100000 = [...Array(100000).keys()];
-const arr10000000 = [...Array(10000000).keys()];
+const ten = [...Array(10).keys()];
+const tenThousand = [...Array(100000).keys()];
+const tenMillion = [...Array(10000000).keys()];
+// const oneBillion = [...Array(1000000000).keys()]; // TOO BIG!
 
 function setup() {
     createCanvas(400, 400);
-    fill(255, 0, 0);
+    fill(255, 0, 255);
 }
 
 function draw() {
@@ -60,6 +60,17 @@ function findMax(arr) {
         }
     }
     return max;
+}
+
+
+/**
+ * Prints each item in an array, one at a time
+ * @param {any[]} arr An array of anything
+ */
+function printEverything(arr) {
+    for (const item of arr) {
+        console.log(item);
+    }
 }
 
 
