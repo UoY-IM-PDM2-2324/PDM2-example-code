@@ -16,7 +16,7 @@ let experimentRunning = false;
  * Array(length) creates an array of the given length with no elements e.g. the item at index 0 will be undefined
  * The array keys() method returns a special object (an Iterator) containing each index
  * ... is known as the "spread operator". It breaks apart the contents of an object / array
- * [...someObject] copies the contents of someObject into an new array
+ * [...someObject] copies the contents of someObject into a new array
  */
 const arr10 = [...Array(10).keys()];
 const arr1000 = [...Array(1000).keys()];
@@ -40,11 +40,9 @@ function draw() {
  * @param {Function} func The function to times.
  */
 function runExperiment(arr, func) {
-    fill(255);
     const start = Date.now();
     const response = func(arr);
     const end = Date.now();
-    fill(255, 0, 0);
     console.log(`Running ${func.name} on an array of length ${arr.length} took: ${end - start} milliseconds. Response =`, response);
 }
 
