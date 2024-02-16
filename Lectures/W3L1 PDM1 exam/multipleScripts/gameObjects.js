@@ -1,3 +1,5 @@
+
+
 /**
  * Class representing a segment of a snake's body.
  */
