@@ -3,7 +3,6 @@ function setup() {
 }
 
 
-
 /**
  * Creates an array and fills it with integers from 0 up to but not 
  * including maxValue.
