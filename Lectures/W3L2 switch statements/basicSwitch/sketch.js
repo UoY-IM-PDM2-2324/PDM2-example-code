@@ -13,6 +13,11 @@ switch (input) {
     case 3:
         console.log("This is the third case");
         break;
+    case 4:
+    case 5:
+    case 6:
+        console.log("This is the fourth, fifth, or sixth case");
+        break
     default:
         console.log("This is the default");
 }
