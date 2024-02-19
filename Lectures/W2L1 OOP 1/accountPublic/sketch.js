@@ -15,10 +15,11 @@ function setup() {
 function draw() {} // not technically needed
 
 function keyPressed() {
-    for (const [key, user] of allUsers) {
-        user.username = "newUser";
-        user.password = 123456;
-    }
+    // console.log("updating all users")
+    // for (const [key, user] of allUsers) {
+    //     user.username = "newUser";
+    //     user.password = 123456;
+    // }
 }
 
 /**
@@ -37,6 +38,9 @@ function signUp() {
         const user = new User(username, pwd);
         allUsers.set(username, user);
         alert("Account created! Please login.");
+        // clear the inputs
+        usernameInput.value("");
+        passwordInput.value("");
     }
 }
 
@@ -53,6 +57,9 @@ function logIn() {
         const user = allUsers.get(username);
         if (user.tryLogin(username, pwd)) {
             alert("You are logged in!");
+            // clear the inputs
+            usernameInput.value("");
+            passwordInput.value("");
         } else {
             alert("Incorrect password! Try again.");
         }

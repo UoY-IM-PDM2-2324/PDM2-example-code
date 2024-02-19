@@ -32,6 +32,9 @@ function signUp() {
         const user = new User(username, pwd);
         allUsers.set(username, user);
         alert("Account created! Please login.");
+        // clear the inputs
+        usernameInput.value("");
+        passwordInput.value("");
     }
 }
 
@@ -48,6 +51,9 @@ function logIn() {
         const user = allUsers.get(username);
         if (user.tryLogin(username, pwd)) {
             alert("You are logged in!");
+            // clear the inputs
+            usernameInput.value("");
+            passwordInput.value("");
         } else {
             alert("Incorrect password! Try again.");
         }

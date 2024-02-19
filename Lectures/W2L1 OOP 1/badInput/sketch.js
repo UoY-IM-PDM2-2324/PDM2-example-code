@@ -25,10 +25,14 @@ function setupInputs() {
     submitButton.size(100, 36);
     nameInput.position(0, 0);
     submitButton.position(150, 0);
-    submitButton.mouseClicked(makeCircles);
+    submitButton.mouseClicked(changeFill);
 }
 
-function makeCircles() {
+/**
+ * Attempts to change the fill colour to the user's choice. 
+ * It the user input is invalid, the default colour pink is used.
+ */
+function changeFill() {
     try {
         const col = colours.get(nameInput.value());
         fill(col);
