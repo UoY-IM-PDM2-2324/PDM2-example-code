@@ -1,3 +1,4 @@
+/** @type {MenuItem[]} */
 const menu = [];
 let addToCart;
 let selected = -1;
@@ -143,6 +144,9 @@ class CustomisableMenuItem extends MenuItem {
     }
 
 
+    /**
+     * @override
+     */
     detail(x, y, w, h) {
         super.detail(x, y, w, h);
         let startY = y + h / 2;

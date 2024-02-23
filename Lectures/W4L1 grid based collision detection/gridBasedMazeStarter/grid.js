@@ -26,9 +26,9 @@ class Grid {
 
 
     /**
-     * Add an obstacle to the grid. Assumes that obstacles are square / rectangular
+     * Add a stationary object to the grid. Assumes that stationary objects are square / rectangular
      * A more complex algorithm would be needed for irregular shapes.
-     * @param {Obstacle} obstacle 
+     * @param {StationaryObject} obstacle 
      */
     addToGrid(obstacle) {
         // Find the first cell in the grid based on the x and y

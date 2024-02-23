@@ -1,6 +1,6 @@
-class Obstacle extends GameObject {
+class StationaryObject extends GameObject {
     
-    #solidness;
+    #solid;
     #colour;
 
 
@@ -10,22 +10,22 @@ class Obstacle extends GameObject {
      * @param {number} y The y coordinate
      * @param {number} w The width of the obstacle
      * @param {number} h The height of the obstacle
-     * @param {number} solidness A number between 0 and 1. 1 means completely solid. Lower numbers provide resistance but can be passed through.
+     * @param {boolean} solid Whether or not the obstacle is solid.
      * @param {Color} colour The colour of the obstacle
      */
-    constructor(x, y, w, h, solidness, colour) {
+    constructor(x, y, w, h, solid, colour) {
         super(x, y, w, h);
-        this.#solidness = solidness;
+        this.#solid = solid;
         this.#colour = colour;
     }
 
 
     /**
-     * Gets the solidness
-     * @returns {number}
+     * Checks if this object is solid
+     * @returns {boolean}
      */
-    getSolidness() {
-        return this.#solidness;
+    isSolid() {
+        return this.#solid;
     }
 
 
@@ -41,7 +41,7 @@ class Obstacle extends GameObject {
 }
 
 
-class Wall extends Obstacle {
+class Wall extends StationaryObject {
 
 
     /**
@@ -52,6 +52,6 @@ class Wall extends Obstacle {
      * @param {number} h The height
      */
     constructor(x, y, w, h) {
-        super(x, y, w, h, 1, color(100));
+        super(x, y, w, h, true, color(100));
     }
 }
