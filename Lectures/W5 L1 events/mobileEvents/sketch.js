@@ -1,31 +1,22 @@
-let shapeFunctions;
-let currentIndex = 0;
-let fillColour;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    shapeFunctions = [circle, square]
-    fillColour = getRandomColour();
+    background(0);
 }
 
 function draw() {
-    background(0);
-    fill(fillColour);
-    shapeFunctions[currentIndex](width / 2, height / 2, 50);
+    for (const t of touches) {
+        circle(t.x, t.y, 50);
+    }
+    if (touches.length === 5) {
+        background(0); // clear the canvas
+    }
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-function deviceMoved() {
-    fillColour = getRandomColour();
-}
-
-function deviceTurned() {
-    // Change shape
-    currentIndex = (currentIndex + 1) % shapeFunctions.length;
-}
 
 
 /**
