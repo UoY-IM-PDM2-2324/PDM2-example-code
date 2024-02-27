@@ -79,9 +79,9 @@ function draw() {
 }
 
 function deviceMoved() {
-    r = map(rotationX, -180, 180, 0, 255);
-    g = map(rotationY, -180, 180, 0, 255);
-    b = map(rotationZ, -180, 180, 0, 255);
+    r = map(rotationX, -PI, PI, 0, 255);
+    g = map(rotationY, -PI, PI, 0, 255);
+    b = map(rotationZ, -PI, PI, 0, 255);
 }
 
 /**
