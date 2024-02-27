@@ -1,6 +1,6 @@
 /**
  * Adapted from the p5.js example.
- * Source: https://p5js.org/examples/mobile-acceleration-ball-bounce.html
+ * Source: https://p5js.org/examples/mobile-acceleration-color.html
  * Modified the original to support iOS.
  */
 
@@ -15,24 +15,10 @@ let permissionButton;
 
 /** END iOS SETUP VARIABLES */
 
-// Position Variables
-let x = 0;
-let y = 0;
-
-// Speed - Velocity
-let vx = 0;
-let vy = 0;
-
-// Acceleration
-let ax = 0;
-let ay = 0;
-
-let vMultiplier = 0.007;
-let bMultiplier = 0.6;
+let r, g, b;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
     /** NEEDED FOR iOS SUPPORT */
     permissionButton = createButton("Allow access to motion sensors");
     if (checkIOS()) {
@@ -43,7 +29,9 @@ function setup() {
     }
     /** END */
 
-    fill(0);
+    r = random(50, 255);
+    g = random(0, 200);
+    b = random(50, 255);
 }
 
 /**
@@ -83,37 +71,13 @@ function setupPermissionButton() {
 }
 
 function draw() {
-    background(255);
-    ballMove();
-    ellipse(x, y, 30, 30);
+    background(r, g, b);
 }
-  
-function ballMove() {
-    ax = accelerationX;
-    ay = accelerationY;
-  
-    vx = vx + ay;
-    vy = vy + ax;
-    y = y + vy * vMultiplier;
-    x = x + vx * vMultiplier;
-  
-    // Bounce when touch the edge of the canvas
-    if (x < 0) {
-      x = 0;
-      vx = -vx * bMultiplier;
-    }
-    if (y < 0) {
-      y = 0;
-      vy = -vy * bMultiplier;
-    }
-    if (x > width - 20) {
-      x = width - 20;
-      vx = -vx * bMultiplier;
-    }
-    if (y > height - 20) {
-      y = height - 20;
-      vy = -vy * bMultiplier;
-    }
+
+function deviceMoved() {
+    r = map(accelerationX, -90, 90, 100, 175);
+    g = map(accelerationY, -90, 90, 100, 200);
+    b = map(accelerationZ, -90, 90, 100, 200);
 }
 
 /**
@@ -123,3 +87,5 @@ function windowResized() {
     // p5.js function to resize the canvas
     resizeCanvas(windowWidth, windowHeight);
 }
+
+
