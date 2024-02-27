@@ -75,13 +75,13 @@ function setupPermissionButton() {
 function draw() {
     background(r, g, b);
     fill(0);
-    text(`accelerationX = ${accelerationX}, accelerationY = ${accelerationY}, accelerationZ = ${accelerationZ}`, width / 2, height / 2)
+    text(`accelerationX = ${accelerationX.toFixed(2)}, accelerationY = ${accelerationY.toFixed(2)}, accelerationZ = ${accelerationZ.toFixed(2)}`, width / 2, height / 2)
 }
 
 function deviceMoved() {
-    r = map(accelerationX, -90, 90, 0, 255);
-    g = map(accelerationY, -90, 90, 0, 255);
-    b = map(accelerationZ, -90, 90, 0, 255);
+    r = (r + accelerationX) % 255;
+    g = (r + accelerationY) % 255;
+    b = (r + accelerationZ) % 255;
 }
 
 /**
