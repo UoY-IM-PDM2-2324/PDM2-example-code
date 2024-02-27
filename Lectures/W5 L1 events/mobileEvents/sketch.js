@@ -1,11 +1,8 @@
-const colours = new Map();
+let activeTouches = new Map();
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
-    for (let i = 1; i <= 5; i++) {
-        colours.set(i, getRandomColour());
-    }
 }
 
 function draw() {
@@ -13,13 +10,8 @@ function draw() {
         background(0); // clear the canvas
     }
     else {
-        fill(0)
-        rect(0, 20, 50, 20);
-        fill(255);
-        textSize(18);
-        text(`Touch ids: ${touches.map(t => t.id).join(", ")}`, 2, 20);
         for (const t of touches) {
-            fill(colours.get(t.id + 1));
+            fill(activeTouches.get(t.id));
             circle(t.x, t.y, 50);
         }
     }
@@ -50,5 +42,17 @@ function touchStarted() {
     // track a touch as it moves
     for (const touch of touches) {
         console.log(touch);
+        // Assign a colour to the touch
+        activeTouches.set(touch.id, getRandomColour());
+    }
+}
+
+function touchEnded() {
+    const stillActive = touches.map(t => t.id);
+    for (const touchId of activeTouches.keys()) {
+        if (!stillActive.includes(touchId)) {
+            console.log("deleting", touchId)
+            activeTouches.delete(touchId);
+        }
     }
 }
