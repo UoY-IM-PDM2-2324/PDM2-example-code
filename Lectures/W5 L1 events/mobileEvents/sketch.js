@@ -13,8 +13,8 @@ function draw() {
         background(0); // clear the canvas
     }
     else {
-        fill(colours.get(touches.length));
         for (const t of touches) {
+            fill(colours.get(t.id + 1));
             circle(t.x, t.y, 50);
         }
     }
@@ -36,4 +36,14 @@ function windowResized() {
  */
 function getRandomColour() {
     return color(random(255), random(255), random(255));
+}
+
+
+function touchStarted() {
+    // touches is a system variable storing an array of touch objects
+    // each object has an x and y and a unique id that can be used to 
+    // track a touch as it moves
+    for (const touch of touches) {
+        console.log(touch);
+    }
 }
