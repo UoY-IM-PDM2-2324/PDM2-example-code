@@ -13,6 +13,11 @@ function draw() {
         background(0); // clear the canvas
     }
     else {
+        fill(0)
+        rect(0, 20, 50, 20);
+        fill(255);
+        textSize(18);
+        text(`Touch ids: ${touches.map(t => t.id).join(", ")}`, 2, 20);
         for (const t of touches) {
             fill(colours.get(t.id + 1));
             circle(t.x, t.y, 50);
