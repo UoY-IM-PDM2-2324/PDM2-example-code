@@ -48,6 +48,8 @@ function touchStarted() {
 }
 
 function touchEnded() {
+    // Remove the touch that ended from the activeTouches map
+    // Not strictly necessary but saves memory
     const stillActive = touches.map(t => t.id);
     for (const touchId of activeTouches.keys()) {
         if (!stillActive.includes(touchId)) {
