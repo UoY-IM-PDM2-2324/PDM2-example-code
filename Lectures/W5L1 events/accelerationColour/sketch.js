@@ -72,6 +72,8 @@ function setupPermissionButton() {
 
 function draw() {
     background(r, g, b);
+    fill(0);
+    text(`accelerationX = ${accelerationX}, accelerationY = ${accelerationY}, accelerationZ = ${accelerationZ}`, 5, 20)
 }
 
 function deviceMoved() {
