@@ -32,6 +32,8 @@ function setup() {
     r = random(50, 255);
     g = random(0, 200);
     b = random(50, 255);
+
+    textAlign(CENTER, CENTER);
 }
 
 /**
@@ -73,7 +75,7 @@ function setupPermissionButton() {
 function draw() {
     background(r, g, b);
     fill(0);
-    text(`accelerationX = ${accelerationX}, accelerationY = ${accelerationY}, accelerationZ = ${accelerationZ}`, 5, 20)
+    text(`accelerationX = ${accelerationX}, accelerationY = ${accelerationY}, accelerationZ = ${accelerationZ}`, width / 2, height / 2)
 }
 
 function deviceMoved() {
