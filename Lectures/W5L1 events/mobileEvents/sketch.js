@@ -52,6 +52,7 @@ function touchEnded() {
     // Not strictly necessary but saves memory
     const stillActive = touches.map(t => t.id);
     for (const touchId of activeTouches.keys()) {
+        // If a touch id is not present in the touches array, it must have ended
         if (!stillActive.includes(touchId)) {
             console.log("deleting", touchId)
             activeTouches.delete(touchId);
