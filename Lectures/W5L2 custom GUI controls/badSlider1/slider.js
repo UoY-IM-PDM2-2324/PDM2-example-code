@@ -129,11 +129,12 @@ class Slider extends CollisionRect {
         if (this.#isInUse) {
             // update the pull based on the y value (accounting for max / min)
             // Keep the y coordinate in range
-            y = constrain(y, this.getY(), this.getY() + this.getHeight() - 5);
+            y = constrain(y, this.getY(), this.getY() + this.getHeight());
             const percentOfHeight = (this.getY() + this.getHeight() - y) / this.getHeight();
             this.#dragValue = percentOfHeight * (this.#maxValue - this.#minValue) + this.#minValue;
         } else {
-            if (this.#pull.containsPoint(x, y)) {
+            // The second half of the if allows the slider to work if its reduced to 0
+            if (this.#pull.containsPoint(x, y) || (this.#pull.getHeight() < 10 && this.containsPoint(x, y))) {
                 this.#isInUse = true;
             }
         }
