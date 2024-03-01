@@ -25,6 +25,10 @@ function mouseClicked() {
     inventoryMenu.checkClick(mouseX, mouseY);
 }
 
+function mouseMoved() {
+    inventoryMenu.checkMouseOver(mouseX, mouseY);
+}
+
 /**
  * Creates an array of pie menu options
  * @returns {MenuButton[]}

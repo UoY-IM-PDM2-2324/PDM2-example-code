@@ -96,12 +96,15 @@ class MenuButton extends CollisionCircle {
      * draw a circle.
      */
     draw() {
-        if ((this.#state === MenuButton.ACTIVE || this.#state === MenuButton.ACTIVE_HOVER)) {
+        noStroke();
+        fill(this.#fillColour);
+        if (this.#state === MenuButton.ACTIVE || this.#state === MenuButton.ACTIVE_HOVER) {
             imageMode(CENTER);
+            if (this.#state === MenuButton.ACTIVE_HOVER) {
+                circle(this.getX(), this.getY(), this.#SIZE + 5);
+            }
             image(this.#icon, this.getX(), this.getY(), this.#SIZE, this.#SIZE);
         } else {
-            fill(this.#fillColour);
-            noStroke();
             circle(this.getX(), this.getY(), this.#SIZE);
             this.move();
         }
@@ -226,9 +229,33 @@ class PieMenu extends CollisionCircle {
                         this.#startClose();
                     }
                 }
+                // If no option was selected, close the menu
+                if (this.#state !== PieMenu.CLOSING) {
+                    this.#startClose();
+                }
             } else {
                 // cancel the menu
                 this.#startClose();
+            }
+        }
+    }
+
+    /**
+     * Check if the mouse is over the pie menu. If the pie menu 
+     * is active, this method will check if any of its buttons are hovered. 
+     * @param {number} x The x coordinate of the mouse
+     * @param {number} y The y coordinate of the mouse
+     */
+    checkMouseOver(x, y) {
+        if (this.#state === PieMenu.ACTIVE) {
+            if (this.hit(x, y)) {
+                for (const option of this.#menuOptions) {
+                    if (option.hit(x, y)) {
+                        option.setState(MenuButton.ACTIVE_HOVER);
+                    } else {
+                        option.setState(MenuButton.ACTIVE);
+                    }
+                }
             }
         }
     }
