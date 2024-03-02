@@ -126,7 +126,7 @@ class Button extends CollisionRect {
             [Button.ENABLED, color(255)],
             [Button.HOVER, color(255)],
             [Button.PRESSED, color(50)]
-        ])
+        ]);
     }
 
 
