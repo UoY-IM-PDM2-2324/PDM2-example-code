@@ -1,6 +1,6 @@
 class StationaryObject extends GameObject {
     
-    #solid; // Not really used in this example!
+    #solid;
     #colour;
 
 
